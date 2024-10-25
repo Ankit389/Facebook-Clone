@@ -3,15 +3,18 @@ import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Input } from "@/components/ui/input";
-import { Bell, Search, Home, Video, Users, Menu, MessageCircle } from 'lucide-react';
+import { Bell, Search, Home, Video, Users, Menu, MessageCircle, LogOut, Moon, Sun } from 'lucide-react';
 import { Avatar } from '@radix-ui/react-avatar';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+import { useTheme } from "next-themes";
+
 
 const Header = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("home");
-
+  const {theme,setTheme} =useTheme()
     const handleNavigation = (path, name) => {
       setActiveTab(name);
       // Implement navigation logic here
@@ -44,11 +47,11 @@ const Header = () => {
                                             <div className='flex items-center gap-2'>
                                                 <Avatar>
                                                     <AvatarImage />
-                                                    <AvatarFallback>D</AvatarFallback>
+                                                    <AvatarFallback>A</AvatarFallback>
                                                 </Avatar>
-                                                <span>ANKIT Pankaj</span>
-                                            </div>
-                                        </div>
+                                     <span>ANKIT Pankaj</span>
+                                 </div>
+                                </div>
                                     </div>
                                 </div>
                             )}
@@ -87,8 +90,8 @@ const Header = () => {
 
              <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="relative h-10 w-10 rounded-full" >
-                        <Avatar>
+                        <Button variant="ghost" className="relative h-8 w-8 rounded-full" >
+                        <Avatar className="h-8 w-8 mr-2">
                   <AvatarImage />
                       <AvatarFallback className="dark:bg-gray-400">D</AvatarFallback>
                    </Avatar>
@@ -102,7 +105,7 @@ const Header = () => {
                    <Avatar className="h-8 w-8 mr-2">
                   <AvatarImage />
                       <AvatarFallback className="dark:bg-gray-400">
-                        D</AvatarFallback>
+                        A</AvatarFallback>
                    </Avatar>
                    <div className="">
                     <p className="text-sm font-medium  leading-none">Ankit Pankaj</p>
@@ -113,10 +116,36 @@ const Header = () => {
                         </div>
                 </DropdownMenuLabel>  
                 <DropdownMenuSeparator/>
-                  </DropdownMenuContent>
+                <DropdownMenuItem  className="cursor-pointer">
+                  <Users/> <span className="mr-2">Profile</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem  className="cursor-pointer">
+                  <MessageCircle/> <span className="ml-2">Messages</span>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator/>
+          <DropdownMenuItem
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="cursor-pointer"
+              >
+                {theme === "light" ? (
+                  <>
+                    <Moon className="mr-2" />
+                    <span>Dark Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Sun className="mr-2" />
+                    <span>Light Mode</span>
+                  </>
+                )}
+       </DropdownMenuItem>
+          <DropdownMenuItem   className="cursor-pointer">
+                  <LogOut/> <span className="ml-2">Logout</span>
+          </DropdownMenuItem>
+                  </DropdownMenuContent> 
              </DropdownMenu>
 
-
+      
                 </div>
             </div>
         </header>
@@ -124,3 +153,4 @@ const Header = () => {
 }
 
 export default Header;
+
