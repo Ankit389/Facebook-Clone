@@ -36,7 +36,7 @@ const StoryCard = ({ isAddStory, story }) => {
                   variant="ghost"
                   size="sm"
                   className="p-0 h-8 w-8 rounded-full bg-blue-500 hover:bg-blue-600 "
-                  onClick={() => fileInputRef.current.click()}
+                  // onClick={() => fileInputRef.current.click()}
                 >
                   <Plus className="h-5 w-5 text-white" />
                 </Button>

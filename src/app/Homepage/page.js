@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import LeftSideBar from '../components/LeftSideBar';
 import RightSideBar from '../components/RightSideBar';
-import StorySection from '@/story/StorySection';
+import StorySection from "@/app/story/StorySection";
 import NewPostForm from '../posts/NewPostForm';
 import PostCard from "../posts/PostCard";
 
