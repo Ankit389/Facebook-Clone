@@ -1,14 +1,28 @@
+
+"use clinet"
+
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { AvatarImage } from '@radix-ui/react-avatar'
 import { Separator } from '@radix-ui/react-select'
 import { Bell, Home, MessageCircle, User, Video } from 'lucide-react'
 import React from 'react'
+import useSidebarStore from "@/store/sidebarStore";
 
 
 const LeftSideBar = () => {
+
+  const { isSidebarOpen, toggleSidebar } = useSidebarStore();
+
+
+
   return (
-    <aside className={`fixed top-16 left-0 h-full w-64 p-4 transform transition-transform duration-200 ease-in-out md:translate-x-0 flex flex-col z-50 md:z-0`}>
+    <aside className={`fixed top-16 left-0 h-full w-64 p-4 transform transition-transform duration-200 ease-in-out md:translate-x-0 flex flex-col z-50 md:z-0 ${
+      isSidebarOpen
+        ? "translate-x-0 bg-white dark:bg-[rgb(36,37,38)] shadow-lg "
+        : " -translate-x-full"
+    } ${isSidebarOpen ? "md:hidden" : ""} md:bg-transparent md:shadow-none`}
+  >
       <div className='flex flex-col h-full overflow-auto'>
              <nav className='space-y-4 flex-grow'>
                 <div className='flex items-center space-x-2 cursor-pointer'>

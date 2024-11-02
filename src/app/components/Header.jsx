@@ -1,20 +1,22 @@
 "use client"
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Input } from "@/components/ui/input";
 import { Bell, Search, Home, Video, Users, Menu, MessageCircle, LogOut, Moon, Sun } from 'lucide-react';
-import { Avatar } from '@radix-ui/react-avatar';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 import { useTheme } from "next-themes";
-
+import useSidebarStore from "@/store/sidebarStore";
 
 const Header = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("home");
+
   const {theme,setTheme} =useTheme()
+  const { toggleSidebar } = useSidebarStore();
     const handleNavigation = (path, name) => {
       setActiveTab(name);
       // Implement navigation logic here
@@ -78,7 +80,11 @@ const Header = () => {
                 </nav>
 
                 <div className="flex space-x-2 md:space-x-4 items-center">
-                    <Button variant="ghost" size="icon" className="md:hidden text-gray-600 cursor-pointer">
+                    <Button variant="ghost" size="icon" className="md:hidden text-gray-600 cursor-pointer"
+                      onClick={toggleSidebar }
+
+
+                     >
                         <Menu />
                     </Button>
                     <Button variant="ghost" size="icon" className="hidden md:block text-gray-600 cursor-pointer">

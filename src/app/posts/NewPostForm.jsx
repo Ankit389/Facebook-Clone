@@ -24,10 +24,11 @@ const NewPostForm = ({ isPostFormOpen, setIsPostFormOpen }) => {
 
   return (
     <Card>
-      <CardContent>
-        <Avatar className="h-8 w-8">
+      <CardContent className="p-4">
+       
+        <Avatar >
           <AvatarImage />
-          <AvatarFallback>A</AvatarFallback>
+          <AvatarFallback className="dark:bg-gray-400" >A</AvatarFallback>
         </Avatar>
         
         <Dialog open={isPostFormOpen} onOpenChange={setIsPostFormOpen}>
@@ -142,7 +143,9 @@ const NewPostForm = ({ isPostFormOpen, setIsPostFormOpen }) => {
             </div>
           </DialogContent>
         </Dialog>
+     
       </CardContent>
+      
     </Card>
   );
 };

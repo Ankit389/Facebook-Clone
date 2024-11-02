@@ -1,11 +1,7 @@
-import React from 'react'
+import { create } from 'zustand'
+const useSidebarStore = create((set) =>({
+    isSidebarOpen:false,
+    toggleSidebar: () => set((state) => ({isSidebarOpen: !state.isSidebarOpen}))
+}))
 
-const sidebarStore = () => {
-  return (
-    <div>
-       
-    </div>
-  )
-}
-
-export default sidebarStore
+export default useSidebarStore;
